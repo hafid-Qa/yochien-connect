@@ -1,5 +1,5 @@
 class Child < ApplicationRecord
-  attr_accessor :age
+  attribute :age, type: :date
 
   belongs_to :parent, class_name: "User"
   belongs_to :teacher, class_name: "User"
@@ -18,6 +18,6 @@ class Child < ApplicationRecord
        default: "waiting for pick up"
 
   def age
-    self[:age] = DateTime.current.to_date.year - date_of_birth.year
+    DateTime.current.to_date.year - date_of_birth.year
   end
 end
