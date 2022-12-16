@@ -5,6 +5,7 @@ class ChildrenController < ApplicationController
   end
 
   def index
+    @children = policy_scope(Child)
   end
 
   def update
