@@ -94,6 +94,7 @@ const Children = (props) => {
               name={child.full_name}
               age={10}
               currentStatus={child.status}
+              address={child.full_address}
             />
           );
         })}
