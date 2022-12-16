@@ -1,4 +1,5 @@
 import React from "react";
+import Box from "@mui/material/Box";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
 import Child from "./Child";
@@ -27,7 +28,7 @@ const Children = () => {
     <div className="container mt-5">
       <h1>Children#index</h1>
       <p>Fake data for now.</p>
-      <div style={{ height: 400, width: "100%" }}>
+      <Box sx={{ height: 400, width: "100%" }}>
         <DataGrid
           rows={rows}
           columns={columns}
@@ -36,7 +37,7 @@ const Children = () => {
           checkboxSelection
           components={{ Toolbar: GridToolbar }}
         />
-      </div>
+      </Box>
     </div>
   );
 };
