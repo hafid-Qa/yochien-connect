@@ -19,3 +19,16 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
 }
+
+#root {
+  top: 64px;
+  position: relative;
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For medium devices */
+@media screen and (max-width: 768px) {
+  #root {
+    top: 0;
+  }
+}

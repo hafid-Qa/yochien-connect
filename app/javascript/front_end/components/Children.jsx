@@ -34,8 +34,8 @@ const Children = () => {
           columns={columns}
           pageSize={5}
           rowsPerPageOptions={[5]}
-          checkboxSelection
-          components={{ Toolbar: GridToolbar }}
+          // checkboxSelection
+          // components={{ Toolbar: GridToolbar }}
         />
       </Box>
     </div>
