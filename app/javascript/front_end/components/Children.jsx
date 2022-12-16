@@ -1,5 +1,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
+import moment from "moment";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
 import Child from "./Child";
@@ -80,8 +81,8 @@ const childrenData = [
 const Children = () => {
   return (
     <div className="container mt-5">
-      <h1>Children#index</h1>
-      <p>Fake data for now.</p>
+      <p className="m-0">{moment().format("dddd, MMM Do YYYY")}</p>
+      <h3 className="mt-1 mb-3">{moment().format("h:mm a")}</h3>
 
       <div className="row gap-2">
         {childrenData.map((child) => {
