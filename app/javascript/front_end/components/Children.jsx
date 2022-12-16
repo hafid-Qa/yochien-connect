@@ -30,20 +30,20 @@ const Children = () => {
       <p className="m-0">{moment().format("dddd, MMM Do YYYY")}</p>
       <h3 className="mt-1 mb-3">{moment().format("h:mm a")}</h3>
 
-      <div className="d-flex gap-2 my-2">
+      <div className="mt-3 mb-2">
         {statuses.map((status, index) => {
           return (
-            <button
+            <span
               className={`${
                 active === index ? "btn-primary" : "btn-secondary"
-              } btn`}
+              } btn btn-small me-2 mb-1`}
               key={index}
               onClick={(e) => {
                 handleClick(e, index);
               }}
             >
               {status}
-            </button>
+            </span>
           );
         })}
       </div>
