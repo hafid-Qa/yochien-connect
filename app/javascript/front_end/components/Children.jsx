@@ -80,20 +80,20 @@ const childrenData = [
 
 const Children = (props) => {
   const { children } = props;
-  console.log(children[0]);
+  console.log(children);
   return (
     <div className="container mt-5">
       <p className="m-0">{moment().format("dddd, MMM Do YYYY")}</p>
       <h3 className="mt-1 mb-3">{moment().format("h:mm a")}</h3>
 
       <div className="row gap-2">
-        {childrenData.map((child) => {
+        {children.map((child) => {
           return (
             <Child
               key={child.id}
-              name={`${child.firstName} ${child.lastName}`}
-              age={child.age}
-              currentStatus={child.currentStatus}
+              name={child.full_name}
+              age={10}
+              currentStatus={child.status}
             />
           );
         })}
