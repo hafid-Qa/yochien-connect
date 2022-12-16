@@ -23,6 +23,10 @@ body {
 #root {
   top: 64px;
   position: relative;
+  height: calc(100vh - 64px);
+  overflow: auto;
+  overflow-x: hidden;
+  padding-bottom: 4rem;
 }
 
 /*=============== BREAKPOINTS ===============*/
