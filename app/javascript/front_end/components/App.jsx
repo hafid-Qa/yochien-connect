@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import Children from "./Children";
 
-const App = () => {
+const App = (props) => {
+  const { initialState } = props;
+  const children = initialState;
+ 
   return (
     <main>
-      <Children />
+      <Children children={children} />
     </main>
   );
 };

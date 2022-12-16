@@ -78,7 +78,9 @@ const childrenData = [
   },
 ];
 
-const Children = () => {
+const Children = (props) => {
+  const { children } = props;
+  console.log(children[0]);
   return (
     <div className="container mt-5">
       <p className="m-0">{moment().format("dddd, MMM Do YYYY")}</p>

@@ -5,10 +5,10 @@ import App from "./components/App";
 
 const initReact = () => {
   const container = document.getElementById("root");
-
+  const initialState = JSON.parse(container.dataset.children);
   if (container) {
     const root = ReactDOM.createRoot(container);
-    root.render(<App />);
+    root.render(<App initialState={initialState} />);
   }
 };
 
