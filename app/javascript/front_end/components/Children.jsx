@@ -92,7 +92,7 @@ const Children = (props) => {
             <Child
               key={child.id}
               name={child.full_name}
-              age={10}
+              age={child.age}
               currentStatus={child.status}
               address={child.full_address}
             />
