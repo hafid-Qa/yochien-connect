@@ -5,8 +5,9 @@
   top: 0;
   left: 0;
   padding: 0 2rem;
-  background-color: $primary; // temp
-  color: $white; // temp
+  background-color: $white; // temp
+  color: $dark; // temp
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
 }
 
 .navbar ul {
@@ -24,6 +25,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  opacity: 0.8;
 }
 
 .navbar .nav-link {
@@ -39,8 +45,8 @@
 /* For medium devices */
 @media screen and (max-width: 768px) {
   .navbar {
-    background-color: $white;
-    color: $dark; // temp
+    background-color: $primary;
+    color: $white; // temp
     top: initial;
     bottom: 0;
   }
