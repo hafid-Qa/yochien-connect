@@ -1,12 +1,70 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.navbar {
+  height: 4rem;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0 2rem;
+  background-color: $primary; // temp
+  color: $white; // temp
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.navbar ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  padding-left: 0;
+  margin-bottom: 0;
+  gap: 2rem;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar .nav-link {
+  font-size: 0.9rem;
+}
+
+.navbar .nav-icon {
+  display: none;
+  font-size: 1.2rem;
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For medium devices */
+@media screen and (max-width: 768px) {
+  .navbar {
+    background-color: $white;
+    color: $dark; // temp
+    top: initial;
+    bottom: 0;
+  }
+
+  .navbar ul {
+    justify-content: space-around;
+  }
+
+  .nav-item {
+    padding: 8px 8px 4px;
+    width: 3.6rem;
+    border-radius: 8px;
+  }
+
+  .nav-item.active {
+    background-color: $primary;
+    color: $white;
+  }
+
+  .navbar .nav-link {
+    font-size: 0.7rem;
+  }
+
+  .navbar .nav-icon {
+    display: block;
+  }
 }
