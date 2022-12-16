@@ -1,14 +1,26 @@
 import React from "react";
 
-const Child = () => {
+const Child = ({ name, age, currentStatus }) => {
+  const profilImgUrl =
+    "https://imgs.search.brave.com/93vIQeqFrqeopRkmyUBgIEnccTvF-Qsl5opsKSbzw-c/rs:fit:900:900:1/g:ce/aHR0cHM6Ly95dDMu/Z2dwaHQuY29tL2Ev/QUFUWEFKeXhpWGI0/TVhBMGVMZl92a0ZV/NHRuUU15VVdGV1dq/QUZzb2lNVzFiUT1z/OTAwLWMtay1jMHhm/ZmZmZmZmZi1uby1y/ai1tbw";
+
   return (
-    <div className="d-flex gap-3 justify-content-around align-items-center bg-white p-3 mb-3">
-      <div className="d-flex gap-2">
-        <p className="m-0 bg-dark text-white rounded">child.jpg</p>
-        <h5 className="m-0">children name</h5>
+    <div className="col-12">
+      <div className="card child-card">
+        <div className="child-info">
+          <img src={profilImgUrl} alt="" className="child-img" />
+          <div className="child-detail">
+            <div className="child-name">
+              <h5 className="m-0">{name}</h5>
+            </div>
+            <div className="child-data">
+              <p className="m-0">Age: {age}</p>
+              <p className="m-0">Address: 012-345 Meguro, Tokyo</p>
+            </div>
+          </div>
+        </div>
+        <button className="child-status">{currentStatus}</button>
       </div>
-      <p className="m-0">Address: Meugro, Tokyo</p>
-      <button className="rounded-pill">status</button>
     </div>
   );
 };
