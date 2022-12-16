@@ -10,9 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_13_022832) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_16_020419) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "children", force: :cascade do |t|
+    t.bigint "parent_id"
+    t.integer "status"
+    t.string "full_address"
+    t.string "full_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "teacher_id"
+    t.index ["parent_id"], name: "index_children_on_parent_id"
+    t.index ["teacher_id"], name: "index_children_on_teacher_id"
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.bigint "child_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "pick_up_time"
+    t.datetime "drop_off_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_id"], name: "index_trips_on_child_id"
+    t.index ["user_id"], name: "index_trips_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +45,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_022832) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
+    t.string "type"
+    t.string "full_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "children", "users", column: "parent_id"
+  add_foreign_key "children", "users", column: "teacher_id"
+  add_foreign_key "trips", "children"
+  add_foreign_key "trips", "users"
 end
