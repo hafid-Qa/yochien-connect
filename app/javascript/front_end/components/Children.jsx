@@ -29,13 +29,13 @@ const Children = (props) => {
       <p className="m-0">{moment().format("dddd, MMM Do YYYY")}</p>
       <h3 className="mt-1 mb-3">{moment().format("h:mm a")}</h3>
 
-      <div className="mt-3 mb-2">
+      <div className="filter-container">
         {statuses.map((status, index) => {
           return (
             <span
               className={`${
                 active === index ? "btn-primary" : "btn-secondary"
-              } btn btn-small me-2 mb-1`}
+              } btn btn-small mb-1`}
               key={index}
               onClick={(e) => {
                 handleClick(e, index);
