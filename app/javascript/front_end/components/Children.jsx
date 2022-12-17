@@ -4,14 +4,14 @@ import { childrenData, statuses } from "../mockData/data";
 
 import Child from "./Child";
 
-const Children = () => {
+const Children = (props) => {
   const [filter, setFilter] = useState("all");
   const [children, setChildren] = useState([]);
   const [active, setActive] = useState(0);
 
   useEffect(() => {
     if (filter === "all") {
-      setChildren(childrenData);
+      setChildren(props.children);
     } else {
       const newChildren = childrenData.filter((child) => {
         return child.currentStatus === filter;
@@ -24,9 +24,6 @@ const Children = () => {
     setFilter(e.target.textContent);
     setActive(index);
   };
-
-const Children = (props) => {
-  const { children } = props;
   return (
     <div className="container mt-5">
       <p className="m-0">{moment().format("dddd, MMM Do YYYY")}</p>
