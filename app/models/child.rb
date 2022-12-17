@@ -3,6 +3,7 @@ class Child < ApplicationRecord
 
   belongs_to :parent, class_name: "User"
   belongs_to :teacher, class_name: "User"
+  belongs_to :trip, optional: true
   validates :full_name, presence: true
   validates :full_address, presence: true
   validates :full_name, presence: true
