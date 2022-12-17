@@ -6,17 +6,17 @@ import Child from "./Child";
 
 const Children = (props) => {
   const [filter, setFilter] = useState("all");
-  const [children, setChildren] = useState(props.children);
+  const [children, setChildren] = useState([]);
   const [active, setActive] = useState(0);
 
   useEffect(() => {
     if (filter === "all") {
-      setChildren(children);
+      setChildren(props.children);
     } else {
-      const newChildren = children.filter((child) => {
+      const newChildren = props.children.filter((child) => {
         return child.status === filter;
       });
-      setChildren(children);
+      setChildren(newChildren);
     }
   }, [filter]);
 

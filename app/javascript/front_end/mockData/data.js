@@ -1,5 +1,6 @@
 export const statuses = [
   "all",
+  "waiting for pick up",
   "on board",
   "dropped off",
   "at school",
