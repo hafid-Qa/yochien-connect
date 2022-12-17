@@ -7,23 +7,36 @@
 #   Character.create(name: "Luke", movie: movies.first)
 puts "clearing the database"
 User.destroy_all
-puts "creating Users..."
+puts "creating admin Users..."
 USERS= [
   {
   email: "joyce@example.com",
   password: "Password123",
+  admin: true,
   },
   {
   email: "hafid@example.com",
   password: "Password123",
+  admin: true,
   },
   {
   email: "fred@example.com",
   password: "Password123",
+  admin: true,
   }
 ]
 USERS.each do |user_acc|
   new_user = User.new(user_acc)
   new_user.save!
 end
-puts "Users created successfully"
+puts "Admin Users created successfully"
+
+puts "creating Parents teachers and driver "
+
+10.times do |person|
+user= User.create!{
+ email: "", created_at: nil, updated_at: nil, admin: false, full_name: nil
+
+}
+
+end
