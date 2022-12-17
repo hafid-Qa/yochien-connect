@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
- import { childrenData, statuses } from "../mockData/data";
+import { childrenData, statuses } from "../mockData/data";
 
 import Child from "./Child";
 
