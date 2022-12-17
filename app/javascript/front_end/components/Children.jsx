@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import { childrenData, statuses } from "../mockData/data";
+ import { childrenData, statuses } from "../mockData/data";
 
 import Child from "./Child";
 
 const Children = (props) => {
   const [filter, setFilter] = useState("all");
-  const [children, setChildren] = useState([]);
+  const [children, setChildren] = useState(props.children);
   const [active, setActive] = useState(0);
 
   useEffect(() => {
     if (filter === "all") {
-      setChildren(props.children);
+      setChildren(children);
     } else {
-      const newChildren = childrenData.filter((child) => {
-        return child.currentStatus === filter;
+      const newChildren = children.filter((child) => {
+        return child.status === filter;
       });
-      setChildren(newChildren);
+      setChildren(children);
     }
   }, [filter]);
 
