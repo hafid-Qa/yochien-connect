@@ -51,6 +51,7 @@ gem "sassc-rails"
 gem 'aws-sdk-core', '~> 3.168', '>= 3.168.4'
 gem "devise"
 gem "autoprefixer-rails"
+gem "faker"
 gem "font-awesome-sass", "~> 6.1"
 gem 'pundit', '~> 2.2'
 gem 'rqrcode', '~> 2.1', '>= 2.1.2'
