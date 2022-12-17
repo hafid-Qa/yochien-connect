@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_16_130250) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_17_011125) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_16_130250) do
     t.datetime "updated_at", null: false
     t.bigint "teacher_id"
     t.string "qr_code"
-    t.date "date_of_birth"
+    t.date "birthday"
     t.index ["parent_id"], name: "index_children_on_parent_id"
     t.index ["teacher_id"], name: "index_children_on_teacher_id"
   end

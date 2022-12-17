@@ -18,6 +18,6 @@ class Child < ApplicationRecord
        default: "waiting for pick up"
 
   def age
-    DateTime.current.to_date.year - date_of_birth.year
+    DateTime.current.to_date.year - birthday.year
   end
 end
