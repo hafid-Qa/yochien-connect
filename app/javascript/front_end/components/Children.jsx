@@ -25,6 +25,8 @@ const Children = () => {
     setActive(index);
   };
 
+const Children = (props) => {
+  const { children } = props;
   return (
     <div className="container mt-5">
       <p className="m-0">{moment().format("dddd, MMM Do YYYY")}</p>
@@ -53,9 +55,10 @@ const Children = () => {
           return (
             <Child
               key={child.id}
-              name={`${child.firstName} ${child.lastName}`}
+              name={child.full_name}
               age={child.age}
-              currentStatus={child.currentStatus}
+              currentStatus={child.status}
+              address={child.full_address}
             />
           );
         })}
