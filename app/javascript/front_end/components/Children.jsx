@@ -18,7 +18,7 @@ const Children = (props) => {
       setChildren(childrenData);
     } else {
       const newChildren = childrenData.filter((child) => {
-        return child.currentStatus === filter;
+        return child.status === filter;
       });
       setChildren(newChildren);
     }
@@ -60,7 +60,7 @@ const Children = (props) => {
               key={child.id}
               name={child.full_name}
               age={child.age}
-              currentStatus={child.status}
+              status={child.status}
               address={child.full_address}
             />
           );
