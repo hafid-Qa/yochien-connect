@@ -51,6 +51,16 @@
   justify-self: end;
 }
 
+.filter-container {
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  white-space: nowrap;
+  margin: 3rem 0 2rem;
+  padding-bottom: 8px;
+  gap: 0.5rem;
+}
+
 /*=============== BREAKPOINTS ===============*/
 /* For medium devices */
 @media screen and (max-width: 768px) {

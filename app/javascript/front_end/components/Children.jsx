@@ -6,17 +6,17 @@ import Child from "./Child";
 
 const Children = (props) => {
   const [filter, setFilter] = useState("all");
-  const [children, setChildren] = useState(props.children);
+  const [children, setChildren] = useState([]);
   const [active, setActive] = useState(0);
 
   useEffect(() => {
     if (filter === "all") {
-      setChildren(children);
+      setChildren(props.children);
     } else {
-      const newChildren = children.filter((child) => {
+      const newChildren = props.children.filter((child) => {
         return child.status === filter;
       });
-      setChildren(children);
+      setChildren(newChildren);
     }
   }, [filter]);
 
@@ -29,13 +29,13 @@ const Children = (props) => {
       <p className="m-0">{moment().format("dddd, MMM Do YYYY")}</p>
       <h3 className="mt-1 mb-3">{moment().format("h:mm a")}</h3>
 
-      <div className="mt-3 mb-2">
+      <div className="filter-container">
         {statuses.map((status, index) => {
           return (
             <span
               className={`${
                 active === index ? "btn-primary" : "btn-secondary"
-              } btn btn-small me-2 mb-1`}
+              } btn btn-small mb-1`}
               key={index}
               onClick={(e) => {
                 handleClick(e, index);
