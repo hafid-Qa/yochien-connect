@@ -54,7 +54,7 @@ const Children = (props) => {
               key={child.id}
               name={child.full_name}
               age={child.age}
-              currentStatus={child.status}
+              status={child.status}
               address={child.full_address}
             />
           );
