@@ -96,18 +96,6 @@ end
 
 puts "Parents created successfully"
 
-puts "creating Parents... "
-4.times do |index|
-User.create!(
-email: "teacher#{index + 1}@example.com", 
-role_type: "teacher",
-full_name: Faker::Name.name ,
-password: "Password123"
-)
-end
-
-puts "teachers created successfully"
-
 puts "creating drivers... "
 2.times do |index|
 User.create!(
@@ -130,9 +118,22 @@ child = Child.new(
  birthday: DateTime.current.to_date  - (rand(6..15) * 100) ,
 )
 child.parent = User.where(role_type: "parent").sample
-child.teacher = User.where(role_type: "teacher").sample
 child.save!
 end
 
 puts "children created successfully"
+
+puts "creating trips... "
+
+20.times do |index|
+child = Child.new(
+ full_address: GEODATA.sample,
+ full_name: Faker::Name.name ,
+ birthday: DateTime.current.to_date  - (rand(6..15) * 100) ,
+)
+child.parent = User.where(role_type: "parent").sample
+child.save!
+end
+
+puts "trips created successfully"
 
