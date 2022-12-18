@@ -59,21 +59,21 @@ USERS= [
   full_name: "Joyce",
   email: "joyce@example.com",
   password: "Password123",
-  role_type: "admin",
+  role_type: "teacher",
   admin: true,
   },
   {
   full_name: "Hafid",
   email: "hafid@example.com",
   password: "Password123",
-  role_type: "admin",
+  role_type: "teacher",
   admin: true,
   },
   {
   full_name: "Fred",
   email: "fred@example.com",
   password: "Password123",
-  role_type: "admin",
+  role_type: "teacher",
   admin: true,
   }
 ]
@@ -81,7 +81,7 @@ USERS.each do |user_acc|
   new_user = User.new(user_acc)
   new_user.save!
 end
-puts "Admin Users created successfully"
+puts "Teachers created successfully"
 
 puts "creating Parents..."
 

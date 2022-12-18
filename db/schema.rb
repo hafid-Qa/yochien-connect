@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_17_151455) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_18_072053) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,12 +29,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_17_151455) do
   end
 
   create_table "trips", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.datetime "pick_up_time"
     t.datetime "drop_off_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_trips_on_user_id"
+    t.bigint "driver_id", null: false
+    t.index ["driver_id"], name: "index_trips_on_driver_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,5 +54,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_17_151455) do
 
   add_foreign_key "children", "trips"
   add_foreign_key "children", "users", column: "parent_id"
-  add_foreign_key "trips", "users"
+  add_foreign_key "trips", "users", column: "driver_id"
 end
