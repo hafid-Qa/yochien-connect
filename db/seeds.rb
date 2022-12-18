@@ -50,11 +50,13 @@ GEODATA = ["913-14 Jogasawa, Mutsu shi, Aomori ken",
            "229-5 Higashimachi, Iwakura shi, Aichi ken"]
 
 puts "clearing the database"
-
-User.destroy_all
-Child.destroy_all
-Trip.destroy_all
 Route.destroy_all
+Trip.destroy_all
+Child.destroy_all
+User.destroy_all
+
+
+
 
 puts "creating teacher..."
 USERS= [
@@ -122,7 +124,7 @@ puts "routes created successfully"
 
 puts "creating trips... "
 
-30.times do |index|
+20.times do |index|
 driver = User.where(role_type: "driver").sample.id
 date= DateTime.current.to_date + index
 Trip.create!(trip_date: date, driver_id: driver, route_id: route1.id)
@@ -141,6 +143,7 @@ child = Child.new(
  birthday: DateTime.current.to_date  - (rand(6..20) * 100) ,
 )
 child.parent = User.where(role_type: "parent").sample
+child.save! 
 end
 
 puts "children created successfully"
@@ -148,6 +151,10 @@ puts "children created successfully"
 puts "Assigning children to trips"
 
 Child.all.each do |child|
-
-
+   Trip.all.each do |trip|
+    child.trip = trip
+    child.save!
+   end
 end
+
+puts "Assigned children to trips successfully"
