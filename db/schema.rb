@@ -39,7 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_18_075634) do
   create_table "trips", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "driver_id", null: false
+    t.bigint "driver_id"
     t.bigint "route_id"
     t.date "trip_date"
     t.index ["driver_id"], name: "index_trips_on_driver_id"

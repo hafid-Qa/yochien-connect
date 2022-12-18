@@ -52,8 +52,11 @@ GEODATA = ["913-14 Jogasawa, Mutsu shi, Aomori ken",
 puts "clearing the database"
 
 User.destroy_all
+Child.destroy_all
+Trip.destroy_all
+Route.destroy_all
 
-puts "creating admin Users..."
+puts "creating teacher..."
 USERS= [
   {
   full_name: "Joyce",
@@ -109,10 +112,11 @@ end
 puts "drivers created successfully"
 
 
+
 puts "creating routes"
 
- route1= Route.create!(route_mumber: 1, origin: "Home", destination: "School")
- route2= Route.create!(route_mumber: 2, origin: "School", destination: "Home")
+ route1= Route.create!(route_number: 1, origin: "Home", destination: "School")
+ route2= Route.create!(route_number: 2, origin: "School", destination: "Home")
 
 puts "routes created successfully"
 
@@ -141,4 +145,9 @@ end
 
 puts "children created successfully"
 
+puts "Assigning children to trips"
 
+Child.all.each do |child|
+
+
+end
