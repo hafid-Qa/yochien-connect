@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :children_as_parent, class_name: "Child", foreign_key: :parent_id, dependent: :destroy
-  has_many :trips
+  has_many :trips_as_driver, class_name: "Trip", foreign_key: :driver_id
   validates :email, presence: true
   validates :full_name, presence: true
   # validates :type, presence: true

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_18_072053) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_18_074143) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,13 +28,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_18_072053) do
     t.index ["trip_id"], name: "index_children_on_trip_id"
   end
 
+  create_table "routes", force: :cascade do |t|
+    t.string "origin"
+    t.string "destination"
+    t.integer "route_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "trips", force: :cascade do |t|
-    t.datetime "pick_up_time"
-    t.datetime "drop_off_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "driver_id", null: false
+    t.bigint "route_id"
     t.index ["driver_id"], name: "index_trips_on_driver_id"
+    t.index ["route_id"], name: "index_trips_on_route_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,5 +62,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_18_072053) do
 
   add_foreign_key "children", "trips"
   add_foreign_key "children", "users", column: "parent_id"
+  add_foreign_key "trips", "routes"
   add_foreign_key "trips", "users", column: "driver_id"
 end
