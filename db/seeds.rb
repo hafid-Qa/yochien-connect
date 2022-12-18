@@ -109,31 +109,36 @@ end
 puts "drivers created successfully"
 
 
+puts "creating routes"
+
+ route1= Route.create!(route_mumber: 1, origin: "Home", destination: "School")
+ route2= Route.create!(route_mumber: 2, origin: "School", destination: "Home")
+
+puts "routes created successfully"
+
+puts "creating trips... "
+
+30.times do |index|
+driver = User.where(role_type: "driver").sample.id
+date= DateTime.current.to_date + index
+Trip.create!(trip_date: date, driver_id: driver, route_id: route1.id)
+Trip.create!(trip_date: date, driver_id: driver, route_id: route2.id)
+end
+
+puts "trips created successfully"
+
+
 puts "creating children... "
 
 20.times do |index|
 child = Child.new(
  full_address: GEODATA.sample,
  full_name: Faker::Name.name ,
- birthday: DateTime.current.to_date  - (rand(6..15) * 100) ,
+ birthday: DateTime.current.to_date  - (rand(6..20) * 100) ,
 )
 child.parent = User.where(role_type: "parent").sample
-child.save!
 end
 
 puts "children created successfully"
 
-puts "creating trips... "
-
-20.times do |index|
-child = Child.new(
- full_address: GEODATA.sample,
- full_name: Faker::Name.name ,
- birthday: DateTime.current.to_date  - (rand(6..15) * 100) ,
-)
-child.parent = User.where(role_type: "parent").sample
-child.save!
-end
-
-puts "trips created successfully"
 
