@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RouteTest < ActiveSupport::TestCase
+class ChildInTripTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

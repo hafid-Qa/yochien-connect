@@ -50,10 +50,11 @@ GEODATA = ["913-14 Jogasawa, Mutsu shi, Aomori ken",
            "229-5 Higashimachi, Iwakura shi, Aichi ken"]
 
 puts "clearing the database"
-Route.destroy_all
+ChildInTrip.destroy_all
 Trip.destroy_all
 Child.destroy_all
 User.destroy_all
+
 
 
 
@@ -102,34 +103,21 @@ end
 puts "Parents created successfully"
 
 puts "creating drivers... "
-2.times do |index|
+
 User.create!(
-email: "driver#{index + 1}@example.com", 
+email: "driver@example.com", 
 role_type: "driver",
 full_name: Faker::Name.name ,
 password: "Password123"
 )
-end
 
 puts "drivers created successfully"
 
-
-
-puts "creating routes"
-
- route1= Route.create!(route_number: 1, origin: "Home", destination: "School")
- route2= Route.create!(route_number: 2, origin: "School", destination: "Home")
-
-puts "routes created successfully"
-
 puts "creating trips... "
 
-20.times do |index|
-driver = User.where(role_type: "driver").sample.id
-date= DateTime.current.to_date + index
-Trip.create!(trip_date: date, driver_id: driver, route_id: route1.id)
-Trip.create!(trip_date: date, driver_id: driver, route_id: route2.id)
-end
+driver = User.where(role_type: "driver").first
+Trip.create!(driver_id: driver.id, trip_no: 1, origin: "Home", destination: "School")
+Trip.create!(driver_id: driver.id, trip_no: 2, origin: "School", destination: "Home")
 
 puts "trips created successfully"
 
@@ -149,12 +137,26 @@ end
 puts "children created successfully"
 
 puts "Assigning children to trips"
+going_to_school = Trip.first.id
+going_to_home = Trip.second.id
 
 Child.all.each do |child|
-   Trip.all.each do |trip|
-    child.trip = trip
-    child.save!
-   end
+  10.times do |index|
+    date= DateTime.current.to_date + index
+    morning = ChildInTrip.create!(trip_date: date, trip_id: going_to_school )
+    evening = ChildInTrip.create!(trip_date: date, trip_id: going_to_home)
+    morning.child = child
+    evening.child = child
+    morning.save!
+    evening.save!
+  end
 end
+
+# Child.all.each do |child|
+#    Trip.all.each do |trip|
+#     child.trip = trip
+#     child.save!
+#    end
+# end
 
 puts "Assigned children to trips successfully"
