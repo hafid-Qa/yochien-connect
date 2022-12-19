@@ -152,11 +152,4 @@ Child.all.each do |child|
   end
 end
 
-# Child.all.each do |child|
-#    Trip.all.each do |trip|
-#     child.trip = trip
-#     child.save!
-#    end
-# end
-
 puts "Assigned children to trips successfully"
