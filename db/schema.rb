@@ -10,33 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_17_054634) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_19_004120) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "child_in_trips", force: :cascade do |t|
+    t.bigint "trip_id", null: false
+    t.bigint "child_id"
+    t.date "trip_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "Status"
+    t.index ["child_id"], name: "index_child_in_trips_on_child_id"
+    t.index ["trip_id"], name: "index_child_in_trips_on_trip_id"
+  end
+
   create_table "children", force: :cascade do |t|
     t.bigint "parent_id"
-    t.integer "status"
     t.string "full_address"
     t.string "full_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "teacher_id"
     t.string "qr_code"
     t.date "birthday"
     t.index ["parent_id"], name: "index_children_on_parent_id"
-    t.index ["teacher_id"], name: "index_children_on_teacher_id"
   end
 
   create_table "trips", force: :cascade do |t|
-    t.bigint "child_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "pick_up_time"
-    t.datetime "drop_off_time"
+    t.string "origin"
+    t.string "destination"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["child_id"], name: "index_trips_on_child_id"
-    t.index ["user_id"], name: "index_trips_on_user_id"
+    t.bigint "driver_id"
+    t.integer "trip_no"
+    t.index ["driver_id"], name: "index_trips_on_driver_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,8 +61,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_17_054634) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "child_in_trips", "children"
+  add_foreign_key "child_in_trips", "trips"
   add_foreign_key "children", "users", column: "parent_id"
-  add_foreign_key "children", "users", column: "teacher_id"
-  add_foreign_key "trips", "children"
-  add_foreign_key "trips", "users"
+  add_foreign_key "trips", "users", column: "driver_id"
 end

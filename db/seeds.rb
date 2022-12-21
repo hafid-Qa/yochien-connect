@@ -50,30 +50,36 @@ GEODATA = ["913-14 Jogasawa, Mutsu shi, Aomori ken",
            "229-5 Higashimachi, Iwakura shi, Aichi ken"]
 
 puts "clearing the database"
-
+ChildInTrip.destroy_all
+Trip.destroy_all
+Child.destroy_all
 User.destroy_all
 
-puts "creating admin Users..."
+
+
+
+
+puts "creating teacher..."
 USERS= [
   {
   full_name: "Joyce",
   email: "joyce@example.com",
   password: "Password123",
-  role_type: "admin",
+  role_type: "teacher",
   admin: true,
   },
   {
   full_name: "Hafid",
   email: "hafid@example.com",
   password: "Password123",
-  role_type: "admin",
+  role_type: "teacher",
   admin: true,
   },
   {
   full_name: "Fred",
   email: "fred@example.com",
   password: "Password123",
-  role_type: "admin",
+  role_type: "teacher",
   admin: true,
   }
 ]
@@ -81,7 +87,7 @@ USERS.each do |user_acc|
   new_user = User.new(user_acc)
   new_user.save!
 end
-puts "Admin Users created successfully"
+puts "Teachers created successfully"
 
 puts "creating Parents..."
 
@@ -96,29 +102,24 @@ end
 
 puts "Parents created successfully"
 
-puts "creating Parents... "
-4.times do |index|
-User.create!(
-email: "teacher#{index + 1}@example.com", 
-role_type: "teacher",
-full_name: Faker::Name.name ,
-password: "Password123"
-)
-end
-
-puts "teachers created successfully"
-
 puts "creating drivers... "
-2.times do |index|
+
 User.create!(
-email: "driver#{index + 1}@example.com", 
+email: "driver@example.com", 
 role_type: "driver",
 full_name: Faker::Name.name ,
 password: "Password123"
 )
-end
 
 puts "drivers created successfully"
+
+puts "creating trips... "
+
+driver = User.where(role_type: "driver").first
+Trip.create!(driver_id: driver.id, trip_no: 1, origin: "Home", destination: "School")
+Trip.create!(driver_id: driver.id, trip_no: 2, origin: "School", destination: "Home")
+
+puts "trips created successfully"
 
 
 puts "creating children... "
@@ -127,12 +128,28 @@ puts "creating children... "
 child = Child.new(
  full_address: GEODATA.sample,
  full_name: Faker::Name.name ,
- birthday: DateTime.current.to_date  - (rand(6..15) * 100) ,
+ birthday: DateTime.current.to_date  - (rand(6..20) * 100) ,
 )
 child.parent = User.where(role_type: "parent").sample
-child.teacher = User.where(role_type: "teacher").sample
-child.save!
+child.save! 
 end
 
 puts "children created successfully"
 
+puts "Assigning children to trips"
+going_to_school = Trip.first.id
+going_to_home = Trip.second.id
+
+Child.all.each do |child|
+  10.times do |index|
+    date= DateTime.current.to_date + index
+    morning = ChildInTrip.create!(trip_date: date, trip_id: going_to_school )
+    evening = ChildInTrip.create!(trip_date: date, trip_id: going_to_home)
+    morning.child = child
+    evening.child = child
+    morning.save!
+    evening.save!
+  end
+end
+
+puts "Assigned children to trips successfully"

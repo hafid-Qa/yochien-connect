@@ -5,7 +5,11 @@ class ChildrenController < ApplicationController
   end
 
   def index
-    @children = policy_scope(Child)
+    going_to_school = Trip.first.id
+    going_to_home = Trip.second.id
+    today_trip = ChildInTrip.where(trip_date: DateTime.current.to_date, trip_id: going_to_school)
+    @children = today_trip.map { |trip| policy_scope(Child.find(trip.child_id)) }
+    
   end
 
   def update

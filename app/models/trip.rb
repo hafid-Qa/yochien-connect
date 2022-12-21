@@ -1,6 +1,5 @@
 class Trip < ApplicationRecord
-  belongs_to :child
-  belongs_to :user
-  validates :pick_up_time, presence: true
-  validates :drop_off_time, presence: true
+  has_many :child_in_trips
+  has_many :children, through: :child_in_trips
+  belongs_to :driver, class_name: "User", optional: true
 end
