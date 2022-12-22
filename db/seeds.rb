@@ -126,7 +126,7 @@ puts "creating children... "
 
 20.times do |index|
 child = Child.new(
- full_address: "tokyo",
+ full_address: GEODATA.sample,
  full_name: Faker::Name.name ,
  birthday: DateTime.current.to_date  - (rand(6..20) * 100) ,
 )
