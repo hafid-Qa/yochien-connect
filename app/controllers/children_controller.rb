@@ -5,11 +5,12 @@ class ChildrenController < ApplicationController
   end
 
   def index
-    going_to_school = Trip.first.id
-    going_to_home = Trip.second.id
-    today_trip = ChildInTrip.where(trip_date: DateTime.current.to_date, trip_id: going_to_school)
-    @children = today_trip.map { |trip| policy_scope(Child.find(trip.child_id)) }
-    
+    query_trip = if Time.new.localtime.hour >= 14
+                   ChildInTrip.where(trip_date: DateTime.current.to_date, trip_id: Trip.first.id)
+                 else
+                   ChildInTrip.where(trip_date: DateTime.current.to_date, trip_id: Trip.second.id)
+                 end
+    @children = query_trip.map { |trip| policy_scope(Child.find(trip.child_id)) }
   end
 
   def update
