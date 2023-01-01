@@ -5,4 +5,8 @@ class Api::V1::TripsPolicy < ApplicationPolicy
     #   scope.all
     # end
   end
+
+  def all?
+    true
+  end
 end
