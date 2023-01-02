@@ -8,11 +8,24 @@ Rails.application.routes.draw do
         resources :trips, only: [ :update]
       end
   end
-
   devise_for :users
   root to: "pages#home"
+
+  
+    # API routing
+    namespace :api, defaults: { format: :json } do
+      namespace :v1 do
+        resources :trips, only: [:update] do
+          get :all 
+        end
+      end
+    end
+
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
+    # API routing
+
 end

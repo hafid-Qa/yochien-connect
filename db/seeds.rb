@@ -143,8 +143,8 @@ going_to_home = Trip.second.id
 Child.all.each do |child|
   10.times do |index|
     date= DateTime.current.to_date + index
-    morning = ChildInTrip.create!(trip_date: date, trip_id: going_to_school )
-    evening = ChildInTrip.create!(trip_date: date, trip_id: going_to_home)
+    morning = ChildInTrip.create!(trip_date: date, trip_id: going_to_school, status: rand(0..7))
+    evening = ChildInTrip.create!(trip_date: date, trip_id: going_to_home, status: rand(0..7) )
     morning.child = child
     evening.child = child
     morning.save!
