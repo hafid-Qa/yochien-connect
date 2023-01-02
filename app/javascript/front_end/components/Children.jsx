@@ -14,7 +14,7 @@ const Children = (props) => {
       setChildren(props.children);
     } else {
       const newChildren = props.children.filter((child) => {
-        return child.status === filter;
+        return child.trip.status === filter;
       });
       setChildren(newChildren);
     }
@@ -54,8 +54,9 @@ const Children = (props) => {
               key={child.id}
               name={child.full_name}
               age={child.age}
-              status={child.status}
+              status={child.trip.status}
               address={child.full_address}
+              tripId={child.trip.id}
             />
           );
         })}
