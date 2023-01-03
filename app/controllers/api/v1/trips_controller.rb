@@ -5,7 +5,8 @@ class Api::V1::TripsController < ApplicationController
     authorize children
   end
 
-  # respond_to do |format|
-  #   format.json { children }
-  # end
+  def update
+    
+  end
+
 end
