@@ -23,7 +23,7 @@ const Child = ({ child, handleChange }) => {
         <select
           id="child-status"
           name="child-status"
-          defaultValue={child.status}
+          defaultValue={child.trip.status}
           onChange={(e) => handleChange(e, child)}
         >
           {statuses.map((status, i) => {
