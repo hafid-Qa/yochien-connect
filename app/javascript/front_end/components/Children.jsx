@@ -20,6 +20,26 @@ const Children = (props) => {
     }
   }, [filter]);
 
+  const updateStatus = (newStatus, tripId) => {
+    const url = `/api/v1/child_in_trips/${tripId}`;
+    const csrfToken = document.querySelector("[name='csrf-token']").content;
+    const options = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": csrfToken,
+      },
+      body: JSON.stringify({ status: newStatus }),
+    };
+    console.log(url);
+    console.log(options);
+    fetch(url, options)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log([data]);
+      });
+  };
+
   const handleClick = (e, index) => {
     setFilter(e.target.textContent);
     setActive(index);
@@ -31,6 +51,7 @@ const Children = (props) => {
 
     // TODO: update database with API
     console.log("updating database...");
+    updateStatus(new_status, child.trip.id);
     console.log("updated");
 
     // update virtual DOM (update value of dropdown)
@@ -71,7 +92,12 @@ const Children = (props) => {
       <div className="row gap-2">
         {children.map((child) => {
           return (
-            <Child key={child.id} child={child} tripId={child.trip.id} handleChange={handleChange} />
+            <Child
+              key={child.id}
+              child={child}
+              tripId={child.trip.id}
+              handleChange={handleChange}
+            />
           );
         })}
       </div>

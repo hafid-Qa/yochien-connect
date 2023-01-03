@@ -3,9 +3,5 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
-
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
-
 import ReactConnectController from "./react_connect_controller"
 application.register("react-connect", ReactConnectController)
