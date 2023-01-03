@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     # API routing
     namespace :api, defaults: { format: :json } do
       namespace :v1 do
-        resources :trips, only: [:update] do
+        resources :child_in_trips, only: [:update] do
           get :all 
         end
       end

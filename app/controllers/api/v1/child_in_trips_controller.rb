@@ -1,12 +1,11 @@
-class Api::V1::TripsController < ApplicationController
+class Api::V1::ChildInTripsController < ApplicationController
+  def update
+    raise
+  end
+
   def all
     children = Child.all
     render json: children
     authorize children
   end
-
-  def update
-    
-  end
-
 end
