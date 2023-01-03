@@ -14,10 +14,13 @@ class Child < ApplicationRecord
   end
 
   def trip
+    trip = child_in_trips.where(trip_date: DateTime.current.to_date)
     if Time.new.localtime.hour >= 14
-      child_in_trips.where(trip_date: DateTime.current.to_date)[0]
+      { id: trip[0].trip_id,
+        status: trip[0].status }
     else
-      child_in_trips.where(trip_date: DateTime.current.to_date)[1]
+      { id: trip[1].trip_id,
+        status: trip[1].status }
     end
   end
 end

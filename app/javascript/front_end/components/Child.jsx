@@ -1,6 +1,6 @@
 import React from "react";
 
-const Child = ({ name, age, status,address,tripId }) => {
+const Child = ({ name, age, status, address, tripId }) => {
   const profilImgUrl =
     "https://imgs.search.brave.com/93vIQeqFrqeopRkmyUBgIEnccTvF-Qsl5opsKSbzw-c/rs:fit:900:900:1/g:ce/aHR0cHM6Ly95dDMu/Z2dwaHQuY29tL2Ev/QUFUWEFKeXhpWGI0/TVhBMGVMZl92a0ZV/NHRuUU15VVdGV1dq/QUZzb2lNVzFiUT1z/OTAwLWMtay1jMHhm/ZmZmZmZmZi1uby1y/ai1tbw";
 
@@ -19,7 +19,9 @@ const Child = ({ name, age, status,address,tripId }) => {
             </div>
           </div>
         </div>
-        <button data-url={`/api/v1/${tripId}`} className="child-status">{status}</button>
+        <button data-url={`/api/v1/trips/${tripId}`} className="child-status">
+          {status}
+        </button>
       </div>
     </div>
   );
