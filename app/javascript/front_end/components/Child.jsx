@@ -1,6 +1,7 @@
 import React from "react";
+import { statuses } from "../mockData/data";
 
-const Child = ({ name, age, status,address }) => {
+const Child = ({ name, age, status, address, handleChange }) => {
   const profilImgUrl =
     "https://imgs.search.brave.com/93vIQeqFrqeopRkmyUBgIEnccTvF-Qsl5opsKSbzw-c/rs:fit:900:900:1/g:ce/aHR0cHM6Ly95dDMu/Z2dwaHQuY29tL2Ev/QUFUWEFKeXhpWGI0/TVhBMGVMZl92a0ZV/NHRuUU15VVdGV1dq/QUZzb2lNVzFiUT1z/OTAwLWMtay1jMHhm/ZmZmZmZmZi1uby1y/ai1tbw";
 
@@ -19,7 +20,21 @@ const Child = ({ name, age, status,address }) => {
             </div>
           </div>
         </div>
-        <button className="child-status">{status}</button>
+        {/* <button className="child-status">{status}</button> */}
+        <select
+          id="child-status"
+          name="child-status"
+          defaultValue={status}
+          onChange={(e) => handleChange(e)}
+        >
+          {statuses.map((stat, i) => {
+            return (
+              <option value={stat} key={i}>
+                {stat}
+              </option>
+            );
+          })}
+        </select>
       </div>
     </div>
   );

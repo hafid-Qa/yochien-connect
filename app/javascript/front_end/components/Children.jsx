@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import { childrenData, statuses } from "../mockData/data";
+import { statuses } from "../mockData/data";
 
 import Child from "./Child";
 
@@ -24,6 +24,11 @@ const Children = (props) => {
     setFilter(e.target.textContent);
     setActive(index);
   };
+
+  const handleChange = (e) => {
+    console.log(e.target.value);
+  };
+
   return (
     <div className="container mt-5">
       <p className="m-0">{moment().format("dddd, MMM Do YYYY")}</p>
@@ -56,6 +61,7 @@ const Children = (props) => {
               age={child.age}
               status={child.status}
               address={child.full_address}
+              handleChange={handleChange}
             />
           );
         })}

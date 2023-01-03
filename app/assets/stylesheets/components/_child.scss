@@ -40,15 +40,23 @@
   align-items: flex-start;
 }
 
-.child-status {
+#child-status {
   white-space: nowrap;
   border: none;
+  outline: none;
   border-radius: 50px;
   padding: 1rem 2rem;
   background-color: $primary;
   color: $white;
   align-self: center;
-  justify-self: end;
+  // justify-self: end;
+  appearance: none;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .filter-container {
@@ -89,7 +97,7 @@
 
 /* For small devices */
 @media screen and (max-width: 350px) {
-  .child-status {
+  #child-status {
     width: 100%;
   }
 }
