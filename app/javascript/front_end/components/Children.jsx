@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import { statuses } from "../mockData/data";
+import { filters } from "../mockData/data";
 
 import Child from "./Child";
 
@@ -25,8 +25,26 @@ const Children = (props) => {
     setActive(index);
   };
 
-  const handleChange = (e) => {
-    console.log(e.target.value);
+  const handleChange = (e, child) => {
+    const new_status = e.target.value;
+    console.log(new_status);
+
+    // TODO: update database with API
+    console.log("updating database...");
+    console.log("updated");
+
+    // TODO: update virtual DOM (update value of dropdown)
+    // setChildren((prevChildren) => {
+    //   prevChildren.map((prev_child) => {
+    //     return child.id === prev_child.id
+    //       ? {
+    //           ...prev_child,
+    //           status: new_status,
+    //         }
+    //       : prev_child;
+    //   });
+    // });
+    // console.log(children);
   };
 
   return (
@@ -35,7 +53,7 @@ const Children = (props) => {
       <h3 className="mt-1 mb-3">{moment().format("h:mm a")}</h3>
 
       <div className="filter-container">
-        {statuses.map((status, index) => {
+        {filters.map((filter, index) => {
           return (
             <span
               className={`${
@@ -46,7 +64,7 @@ const Children = (props) => {
                 handleClick(e, index);
               }}
             >
-              {status}
+              {filter}
             </span>
           );
         })}
@@ -55,14 +73,7 @@ const Children = (props) => {
       <div className="row gap-2">
         {children.map((child) => {
           return (
-            <Child
-              key={child.id}
-              name={child.full_name}
-              age={child.age}
-              status={child.status}
-              address={child.full_address}
-              handleChange={handleChange}
-            />
+            <Child key={child.id} child={child} handleChange={handleChange} />
           );
         })}
       </div>
