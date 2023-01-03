@@ -8,11 +8,14 @@ export const filters = [
 ];
 
 export const statuses = [
-  "waiting for pick up",
   "on board",
   "dropped off",
+  "not boarded",
+  "transport cancelled",
   "at school",
   "left school",
+  "absent",
+  "waiting for pick up",
 ];
 
 export const childrenData = [

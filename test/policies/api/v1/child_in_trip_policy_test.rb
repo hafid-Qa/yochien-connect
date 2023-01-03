@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Api::V1::TripsPolicyTest < ActiveSupport::TestCase
+class Api::V1::ChildInTripPolicyTest < ActiveSupport::TestCase
   def test_scope
   end
 

@@ -1,4 +1,4 @@
-class Api::V1::TripsPolicy < ApplicationPolicy
+class Api::V1::ChildInTripPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     # def resolve
@@ -6,7 +6,7 @@ class Api::V1::TripsPolicy < ApplicationPolicy
     # end
   end
 
-  def all?
-    true
+  def update?
+    record.child.parent_id == user.id || user.admin
   end
 end

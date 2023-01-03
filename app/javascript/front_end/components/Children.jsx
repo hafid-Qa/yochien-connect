@@ -20,6 +20,24 @@ const Children = (props) => {
     }
   }, [filter]);
 
+  const updateStatus = (newStatus, tripId) => {
+    const url = `/api/v1/child_in_trips/${tripId}`;
+    const csrfToken = document.querySelector("[name='csrf-token']").content;
+    const options = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": csrfToken,
+      },
+      body: JSON.stringify({ status: newStatus }),
+    };
+    fetch(url, options)
+      .then((response) => response.json())
+      .then((data) => {
+        setChildren(data);
+      });
+  };
+
   const handleClick = (e, index) => {
     setFilter(e.target.textContent);
     setActive(index);
@@ -27,12 +45,8 @@ const Children = (props) => {
 
   const handleChange = (e, child) => {
     const new_status = e.target.value;
-    console.log(new_status);
-
     // TODO: update database with API
-    console.log("updating database...");
-    console.log("updated");
-
+    updateStatus(new_status, child.trip.id);
     // update virtual DOM (update value of dropdown)
     setChildren((prevChildren) => {
       const newChildren = prevChildren.map((prevChild) => {
@@ -71,7 +85,12 @@ const Children = (props) => {
       <div className="row gap-2">
         {children.map((child) => {
           return (
-            <Child key={child.id} child={child} tripId={child.trip.id} handleChange={handleChange} />
+            <Child
+              key={child.id}
+              child={child}
+              tripId={child.trip.id}
+              handleChange={handleChange}
+            />
           );
         })}
       </div>
