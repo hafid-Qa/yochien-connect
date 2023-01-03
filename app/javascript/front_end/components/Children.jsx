@@ -33,21 +33,16 @@ const Children = (props) => {
     console.log("updating database...");
     console.log("updated");
 
-    // TODO: update virtual DOM (update value of dropdown)
-    // setChildren((prevChildren) => {
-    //   prevChildren.map((prev_child) => {
-    //     child.id === prev_child.id
-    //       ? // transform the one with a matching id
-    //         {
-    //           ...prev_child,
-    //           status: new_status,
-    //         }
-    //       : // otherwise return original
-    //         prev_child;
-    //   });
-    // });
-
-    // console.log(children);
+    // update virtual DOM (update value of dropdown)
+    setChildren((prevChildren) => {
+      const newChildren = prevChildren.map((prevChild) => {
+        return child.id === prevChild.id
+          ? { ...prevChild, status: new_status }
+          : prevChild;
+      });
+      return newChildren;
+    });
+    console.log(children);
   };
 
   return (
