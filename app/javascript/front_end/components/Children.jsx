@@ -31,12 +31,10 @@ const Children = (props) => {
       },
       body: JSON.stringify({ status: newStatus }),
     };
-    console.log(url);
-    console.log(options);
     fetch(url, options)
       .then((response) => response.json())
       .then((data) => {
-        console.log([data]);
+        setChildren(data);
       });
   };
 
@@ -47,13 +45,8 @@ const Children = (props) => {
 
   const handleChange = (e, child) => {
     const new_status = e.target.value;
-    console.log(new_status);
-
     // TODO: update database with API
-    console.log("updating database...");
     updateStatus(new_status, child.trip.id);
-    console.log("updated");
-
     // update virtual DOM (update value of dropdown)
     setChildren((prevChildren) => {
       const newChildren = prevChildren.map((prevChild) => {

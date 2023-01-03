@@ -7,6 +7,6 @@ class Api::V1::ChildInTripPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    record.child.parent_id == user.id || user.admin
   end
 end
