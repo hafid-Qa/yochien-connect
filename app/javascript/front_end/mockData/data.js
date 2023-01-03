@@ -1,5 +1,13 @@
-export const statuses = [
+export const filters = [
   "all",
+  "waiting for pick up",
+  "on board",
+  "dropped off",
+  "at school",
+  "left school",
+];
+
+export const statuses = [
   "waiting for pick up",
   "on board",
   "dropped off",
