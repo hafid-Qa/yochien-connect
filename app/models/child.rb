@@ -1,6 +1,6 @@
 class Child < ApplicationRecord
   attribute :age, type: :date
-  attribute :status, type: :string
+  attribute :trip, type: :hash
 
   belongs_to :parent, class_name: "User"
   has_many :child_in_trips
@@ -13,11 +13,14 @@ class Child < ApplicationRecord
     DateTime.current.to_date.year - birthday.year
   end
 
-  def status
+  def trip
+    trip = child_in_trips.where(trip_date: DateTime.current.to_date)
     if Time.new.localtime.hour >= 14
-      child_in_trips.where(trip_date: DateTime.current.to_date)[0].status
+      { id: trip[0].id,
+        status: trip[0].status }
     else
-      child_in_trips.where(trip_date: DateTime.current.to_date)[1].status
+      { id: trip[1].id,
+        status: trip[1].status }
     end
   end
 end

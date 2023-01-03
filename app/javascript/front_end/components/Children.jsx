@@ -14,7 +14,7 @@ const Children = (props) => {
       setChildren(props.children);
     } else {
       const newChildren = props.children.filter((child) => {
-        return child.status === filter;
+        return child.trip.status === filter;
       });
       setChildren(newChildren);
     }
@@ -73,7 +73,7 @@ const Children = (props) => {
       <div className="row gap-2">
         {children.map((child) => {
           return (
-            <Child key={child.id} child={child} handleChange={handleChange} />
+            <Child key={child.id} child={child} tripId={child.trip.id} handleChange={handleChange} />
           );
         })}
       </div>
