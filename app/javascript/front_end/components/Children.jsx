@@ -32,9 +32,18 @@ const Children = (props) => {
       body: JSON.stringify({ status: newStatus }),
     };
     fetch(url, options)
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Something went wrong");
+        }
+      })
       .then((data) => {
         setChildren(data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
