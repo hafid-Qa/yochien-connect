@@ -1,4 +1,4 @@
-class Api::V1::ChildInTripsController < ApplicationController
+class Api::V1::TripsController < ApplicationController
   def update
     return unless user_signed_in?
 

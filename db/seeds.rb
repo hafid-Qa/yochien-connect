@@ -50,8 +50,8 @@ GEODATA = ["913-14 Jogasawa, Mutsu shi, Aomori ken",
            "229-5 Higashimachi, Iwakura shi, Aichi ken"]
 
 puts "clearing the database"
-ChildInTrip.destroy_all
 Trip.destroy_all
+Route.destroy_all
 Child.destroy_all
 User.destroy_all
 
@@ -71,13 +71,6 @@ USERS= [
   {
   full_name: "Hafid",
   email: "hafid@example.com",
-  password: "Password123",
-  role_type: "teacher",
-  admin: true,
-  },
-  {
-  full_name: "Fred",
-  email: "fred@example.com",
   password: "Password123",
   role_type: "teacher",
   admin: true,
@@ -116,8 +109,8 @@ puts "drivers created successfully"
 puts "creating trips... "
 
 driver = User.where(role_type: "driver").first
-Trip.create!(driver_id: driver.id, trip_no: 1, origin: "Home", destination: "School")
-Trip.create!(driver_id: driver.id, trip_no: 2, origin: "School", destination: "Home")
+Route.create!(driver_id: driver.id, route_no: 1, origin: "Home", destination: "School")
+Route.create!(driver_id: driver.id, route_no: 2, origin: "School", destination: "Home")
 
 puts "trips created successfully"
 
@@ -137,14 +130,14 @@ end
 puts "children created successfully"
 
 puts "Assigning children to trips"
-going_to_school = Trip.first.id
-going_to_home = Trip.second.id
+going_to_school = Route.first.id
+going_to_home = Route.second.id
 
 Child.all.each do |child|
   10.times do |index|
     date= DateTime.current.to_date + index
-    morning = ChildInTrip.create!(trip_date: date, trip_id: going_to_school, status: rand(0..7))
-    evening = ChildInTrip.create!(trip_date: date, trip_id: going_to_home, status: rand(0..7) )
+    morning = Trip.create!(trip_date: date, route_id: going_to_school)
+    evening = Trip.create!(trip_date: date, route_id: going_to_home)
     morning.child = child
     evening.child = child
     morning.save!
