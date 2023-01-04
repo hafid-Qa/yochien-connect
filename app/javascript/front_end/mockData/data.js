@@ -15,7 +15,6 @@ export const statuses = [
   "at school",
   "left school",
   "absent",
-  "waiting for pick up",
 ];
 
 export const childrenData = [
