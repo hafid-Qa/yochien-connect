@@ -97,8 +97,8 @@ const Children = (props) => {
             <Child
               key={child.id}
               child={child}
-              tripId={child.trip.id}
               handleChange={handleChange}
+              roleType={props.roleType}
             />
           );
         })}
