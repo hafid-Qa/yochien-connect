@@ -21,7 +21,7 @@ const Children = (props) => {
   }, [filter]);
 
   const updateStatus = (newStatus, tripId) => {
-    const url = `/api/v1/child_in_trips/${tripId}`;
+    const url = `/api/v1/trips/${tripId}`;
     const csrfToken = document.querySelector("[name='csrf-token']").content;
     const options = {
       method: "PATCH",
