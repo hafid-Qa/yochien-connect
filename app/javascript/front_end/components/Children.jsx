@@ -98,7 +98,7 @@ const Children = (props) => {
               key={child.id}
               child={child}
               handleChange={handleChange}
-              roleType={props.roleType}
+              
             />
           );
         })}

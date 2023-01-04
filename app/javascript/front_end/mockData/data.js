@@ -5,26 +5,20 @@ export const filters = [
   "dropped off",
   "at school",
   "left school",
+  "absent",
+  "transport cancelled",
 ];
 
-export const statuses = {
-  teacher: ["on board",
-  "dropped off",
-  "not boarded",
+export const statuses = [
+  "waiting for pick up",
   "transport cancelled",
+  "on board",
+  "not boarded",
+  "dropped off",
   "at school",
   "left school",
-  "absent",],
-  driver: ["on board",
-  "dropped off",
-  "not boarded",
-  "transport cancelled",
-  "absent",],
-  parent: [
-  "transport cancelled",
-  ],
-}
-
+  "absent",
+];
 
 export const childrenData = [
   {
