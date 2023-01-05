@@ -10,6 +10,7 @@
     "@mui/material": "^5.11.0",
     "@mui/x-data-grid": "^5.17.14",
     "@popperjs/core": "^2.11.6",
+    "@rails/actioncable": "^7.0.4",
     "@rails/webpacker": "5.4.3",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "bootstrap": "^5.2.3",
