@@ -10,9 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_04_131036) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_05_053827) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "children", force: :cascade do |t|
     t.bigint "parent_id"
@@ -23,6 +29,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_131036) do
     t.string "qr_code"
     t.date "birthday"
     t.index ["parent_id"], name: "index_children_on_parent_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "routes", force: :cascade do |t|
@@ -62,6 +78,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_131036) do
   end
 
   add_foreign_key "children", "users", column: "parent_id"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "routes", "users", column: "driver_id"
   add_foreign_key "trips", "children"
   add_foreign_key "trips", "routes"
