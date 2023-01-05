@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root to: "pages#home"
   devise_for :users
   resources :children, only: [:create, :update, :index] 
-resources :chatrooms, only: :show
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
   
     # API routing
     namespace :api, defaults: { format: :json } do
