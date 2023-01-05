@@ -3,5 +3,6 @@ class ChildrenController < ApplicationController
 
   def index
     @children = policy_scope(Child)
+    @chatroom = Chatroom.first
   end
 end

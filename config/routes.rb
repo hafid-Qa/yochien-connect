@@ -1,16 +1,8 @@
 Rails.application.routes.draw do
-  # get 'children/create'
-  # get 'children/index'
-  # get 'children/update'
-  # get 'children/cancel_transport'
-  resources :children, only: [:create, :update, :index] do
-      member do
-        resources :trips, only: [ :update]
-      end
-  end
-  devise_for :users
   root to: "pages#home"
-
+  devise_for :users
+  resources :children, only: [:create, :update, :index] 
+resources :chatrooms, only: :show
   
     # API routing
     namespace :api, defaults: { format: :json } do
