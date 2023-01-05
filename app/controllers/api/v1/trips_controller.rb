@@ -1,8 +1,8 @@
-class Api::V1::ChildInTripsController < ApplicationController
+class Api::V1::TripsController < ApplicationController
   def update
     return unless user_signed_in?
 
-    trip = ChildInTrip.find(params[:id].to_i)
+    trip = Trip.find(params[:id].to_i)
     trip.update(child_in_trips_params)
     if current_user.admin
       children = Child.all
@@ -16,6 +16,6 @@ class Api::V1::ChildInTripsController < ApplicationController
   private
 
   def child_in_trips_params
-    params.require(:child_in_trip).permit(:status)
+    params.require(:trip).permit(:status)
   end
 end

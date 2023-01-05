@@ -1,6 +1,6 @@
 require "test_helper"
 
-class ChildInTripTest < ActiveSupport::TestCase
+class Api::V1::TripsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

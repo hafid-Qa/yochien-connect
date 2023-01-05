@@ -21,7 +21,7 @@ const Children = (props) => {
   }, [filter]);
 
   const updateStatus = (newStatus, tripId) => {
-    const url = `/api/v1/child_in_trips/${tripId}`;
+    const url = `/api/v1/trips/${tripId}`;
     const csrfToken = document.querySelector("[name='csrf-token']").content;
     const options = {
       method: "PATCH",
@@ -32,9 +32,18 @@ const Children = (props) => {
       body: JSON.stringify({ status: newStatus }),
     };
     fetch(url, options)
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Something went wrong");
+        }
+      })
       .then((data) => {
         setChildren(data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
@@ -88,8 +97,8 @@ const Children = (props) => {
             <Child
               key={child.id}
               child={child}
-              tripId={child.trip.id}
               handleChange={handleChange}
+              
             />
           );
         })}

@@ -1,5 +1,14 @@
 class Trip < ApplicationRecord
-  has_many :child_in_trips
-  has_many :children, through: :child_in_trips
-  belongs_to :driver, class_name: "User", optional: true
+  belongs_to :route
+  belongs_to :child, optional: true
+  validates :status, presence: true
+  enum :status, ["on board",
+                 "dropped off",
+                 "not boarded",
+                 "transport cancelled",
+                 "at school",
+                 "left school",
+                 "absent",
+                 "waiting for pick up"],
+       default: "waiting for pick up"
 end

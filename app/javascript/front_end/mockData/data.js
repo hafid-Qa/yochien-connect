@@ -5,17 +5,19 @@ export const filters = [
   "dropped off",
   "at school",
   "left school",
+  "absent",
+  "transport cancelled",
 ];
 
 export const statuses = [
-  "on board",
-  "dropped off",
-  "not boarded",
+  "waiting for pick up",
   "transport cancelled",
+  "on board",
+  "not boarded",
+  "dropped off",
   "at school",
   "left school",
   "absent",
-  "waiting for pick up",
 ];
 
 export const childrenData = [
