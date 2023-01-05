@@ -9,6 +9,11 @@ const Children = (props) => {
   const [children, setChildren] = useState([]);
   const [active, setActive] = useState(0);
 
+  // fetch children data on mount
+  useEffect(() => {
+    // ...
+  }, []);
+
   useEffect(() => {
     if (filter === "all") {
       setChildren(props.children);
@@ -53,19 +58,8 @@ const Children = (props) => {
   };
 
   const handleChange = (e, child) => {
-    const new_status = e.target.value;
-    // TODO: update database with API
-    updateStatus(new_status, child.trip.id);
-    // update virtual DOM (update value of dropdown)
-    setChildren((prevChildren) => {
-      const newChildren = prevChildren.map((prevChild) => {
-        return child.id === prevChild.id
-          ? { ...prevChild, status: new_status }
-          : prevChild;
-      });
-      return newChildren;
-    });
-    console.log(children);
+    const newStatus = e.target.value;
+    updateStatus(newStatus, child.trip.id);
   };
 
   return (
@@ -94,12 +88,7 @@ const Children = (props) => {
       <div className="row gap-2">
         {children.map((child) => {
           return (
-            <Child
-              key={child.id}
-              child={child}
-              handleChange={handleChange}
-              
-            />
+            <Child key={child.id} child={child} handleChange={handleChange} />
           );
         })}
       </div>
