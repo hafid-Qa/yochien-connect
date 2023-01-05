@@ -3,5 +3,9 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
+
+import ChatroomSubscriptionController from "./chatroom_subscription_controller"
+application.register("chatroom-subscription", ChatroomSubscriptionController)
+
 import ReactConnectController from "./react_connect_controller"
 application.register("react-connect", ReactConnectController)
