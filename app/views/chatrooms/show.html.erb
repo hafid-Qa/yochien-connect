@@ -1,25 +1,4 @@
-<div class="container d-flex mt-lg-5">
+<div class="container d-flex mt-lg-5 ">
   <%= render "sidebar", chatrooms: @chatrooms %>
-
-    <div class="d-flex flex-grow-1">
-      <%# <div class="list-group w-200px bg-white br-light">
-    <% @chatrooms.each do |chatroom| %>
-        <%# <%= link_to "##{chatroom.name}", chatroom_path(chatroom), class: "list-group-item #{'active' if chatroom == @chatroom}" %>
-        <%# <% end %>
-        <%# </div> %>
-        <div class="container chatroom" data-controller='chatroom-subscription'
-  data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-          <h1>#<%= @chatroom.name %></h1>
-          <div class="messages" data-chatroom-subscription-target='messages'>
-            <% @chatroom.messages.each do |message| %>
-              <%= render 'messages/message', message: message %>
-            <% end %>
-          </div>
-          <%= simple_form_for [@chatroom, @message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex"} do |f| %>
-            <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}", wrapper_html: {class: "flex-grow-1"} %>
-            <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-          <% end %>
-        </div>
-      </div>
-   
-  </div>
+  <%= render "chat_container" ,chatroom: @chatroom, message: @message %>
+</div>
