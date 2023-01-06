@@ -8,23 +8,19 @@ export default class extends Controller {
   };
 
   connect() {
-    console.log(`chatroom id: ${this.chatroomIdValue}`);
     this.channel = createConsumer().subscriptions.create(
       { channel: "ChatroomChannel", id: this.chatroomIdValue },
       {
         received: (data) => {
-          // console.log(data);
           // insert it into the messages div
           this.messagesTarget.insertAdjacentHTML("beforeend", data);
           this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight);
         },
       }
     );
-    // console.log(`Subscribe to the chatroom with the id ${this.chatroomIdValue}.`)
   }
-
+  // to Unsubscribed from the chatroom
   disconnect() {
-    console.log("Unsubscribed from the chatroom");
     this.channel.unsubscribe();
   }
 
