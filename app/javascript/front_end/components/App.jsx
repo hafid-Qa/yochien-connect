@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Children from "./Children";
+import Children from "./Children.jsx";
 
 const App = (props) => {
   const { initialState } = props;
