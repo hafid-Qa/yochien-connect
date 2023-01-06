@@ -1,0 +1,8 @@
+<div class="container d-flex mt-lg-5 ">
+  <%= render "sidebar", chatrooms: @chatrooms %>
+  <% if params[:id].present? %>
+    <%= render "chat_container" ,chatroom: @chatroom, message: @message %>
+  <% else %>
+    <%= render "overview",chatrooms: @chatrooms %>
+  <% end %>
+</div>

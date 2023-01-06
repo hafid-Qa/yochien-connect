@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   devise_for :users
   resources :children, only: [:create, :update, :index] 
-  resources :chatrooms, only: :show do
+  resources :chatrooms, only: [:show, :index] do
     resources :messages, only: :create
   end
   

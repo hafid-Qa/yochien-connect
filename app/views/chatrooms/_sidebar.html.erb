@@ -17,7 +17,7 @@
       <div class="sidebar-links-container">
         <ul class="nav nav-pills flex-column mb-auto w-100">
           <li class="nav-item">
-            <%= link_to 'Overview', "#", class:"nav-link sidebar-link #{'active' if !params[:id].present?}", "aria_current": "page" %>
+            <%= link_to 'Overview', chatrooms_path , class:"nav-link sidebar-link #{'active' if !params[:id].present?}", "aria_current": "page" %>
           </li>
           <% chatrooms.each do |chatroom, index| %>
             <li class="nav-item">
@@ -30,4 +30,3 @@
     </div>
   </div>
 </div>
-
