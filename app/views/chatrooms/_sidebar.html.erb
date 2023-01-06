@@ -1,0 +1,33 @@
+<div
+  class="sidebar"
+  data-controller="sidebar"
+  data-action="resize@window->sidebar#collaspe"
+  data-action="open@window->sidebar#collaspe">
+  <div class="sidebar-container flex-shrink-0 p-2"
+       data-sidebar-target="content">
+    <div class="sidebar-top">
+      <div class="mb-4">
+        <div class="px-2">
+          <h1 class="mt-4"><%= current_user.full_name %></h1>
+          <p class="sidebar-itinerary-info text-muted">
+            <i class="fa-solid fa-location-dot me-1"></i>
+          </p>
+        </div>
+      </div>
+      <div class="sidebar-links-container">
+        <ul class="nav nav-pills flex-column mb-auto w-100">
+          <li class="nav-item">
+            <%= link_to 'Overview', "#", class:"nav-link sidebar-link #{'active' if !params[:id].present?}", "aria_current": "page" %>
+          </li>
+          <% chatrooms.each do |chatroom, index| %>
+            <li class="nav-item">
+              <%= link_to "write Mr. #{chatroom.name}" , chatroom_path(chatroom), class:"nav-link sidebar-link #{'active' if params[:id].to_i == chatroom.id}
+" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
