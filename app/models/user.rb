@@ -8,5 +8,6 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :full_name, presence: true
   has_many :messages, dependent: :destroy
-  scope :all_except, ->(user) { where.not(id: user) }
+  scope :all_except, ->(user) { where.not(id: user).where.not(admin: true) }
+  scope :all_admins, -> { where(admin: true) }
 end
