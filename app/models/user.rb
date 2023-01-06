@@ -7,6 +7,6 @@ class User < ApplicationRecord
   has_many :trips_as_driver, class_name: "Trip", foreign_key: :driver_id
   validates :email, presence: true
   validates :full_name, presence: true
-  # validates :type, presence: true
   has_many :messages, dependent: :destroy
+  scope :all_except, ->(user) { where.not(id: user) }
 end
