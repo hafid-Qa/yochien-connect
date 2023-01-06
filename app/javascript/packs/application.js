@@ -2,4 +2,4 @@
 import "@hotwired/turbo-rails"
 import "../controllers"
 import "bootstrap"
-import "../front_end/index.jsx";
+// import "../front_end/index.jsx";
