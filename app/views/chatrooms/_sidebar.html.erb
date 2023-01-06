@@ -19,10 +19,18 @@
           <li class="nav-item">
             <%= link_to 'Overview', chatrooms_path , class:"nav-link sidebar-link #{'active' if !params[:id].present?}", "aria_current": "page" %>
           </li>
+          <% if current_user.admin? %>
+          <h3>Parents</h3>
+            <%= render   "users/user", users: users %>
+          <% end %>
+        </ul>
+      </div>
+      <h3>New letters</h3>
+      <div class="sidebar-links-container">
+        <ul class="nav nav-pills flex-column mb-auto w-100">
           <% chatrooms.each do |chatroom, index| %>
             <li class="nav-item">
-              <%= link_to "write Mr. #{chatroom.name}" , chatroom_path(chatroom), class:"nav-link sidebar-link #{'active' if params[:id].to_i == chatroom.id}
-" %>
+              <%= link_to "write Mr. #{chatroom.name}" , chatroom_path(chatroom), class:"nav-link sidebar-link #{'active' if params[:id].to_i == chatroom.id}" %>
             </li>
           <% end %>
         </ul>
