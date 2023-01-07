@@ -2,16 +2,16 @@ class ChatroomsController < ApplicationController
   def index
     @message = Message.new
     @chatrooms = policy_scope(Chatroom)
-    @users = User.all_except(current_user)
+    @users = User.all_parents
     @chatroom = Chatroom.new
   end
 
   def show
     @single_chatroom = Chatroom.find(params[:id])
-    @chatrooms = Chatroom.public_rooms
+    @chatrooms = policy_scope(Chatroom)
     @message = Message.new
     @chatroom = Chatroom.new
-    @users = User.all_except(current_user)
+    @users = User.all_parents
     authorize @chatroom
     render "index"
   end
