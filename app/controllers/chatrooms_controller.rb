@@ -7,9 +7,10 @@ class ChatroomsController < ApplicationController
   end
 
   def show
+    @single_chatroom = Chatroom.find(params[:id])
     @chatrooms = Chatroom.public_rooms
     @message = Message.new
-    @chatroom = Chatroom.find(params[:id])
+    @chatroom = Chatroom.new
     @users = User.all_except(current_user)
     authorize @chatroom
     render "index"

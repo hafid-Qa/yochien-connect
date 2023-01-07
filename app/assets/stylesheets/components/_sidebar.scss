@@ -16,20 +16,20 @@
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-.sidebar-toggle-btn {
-  position: absolute;
-  z-index: 10;
-  left: 172px;
-  top: 40px;
-  border-radius: 50px 4px 4px 50px;
-  transition: 200ms;
-}
+// .sidebar-toggle-btn {
+//   position: absolute;
+//   z-index: 10;
+//   left: 172px;
+//   top: 40px;
+//   border-radius: 50px 4px 4px 50px;
+//   transition: 200ms;
+// }
 
-.shift-btn {
-  left: -4px;
-  opacity: 0.8;
-  border-radius: 4px 50px 50px 4px;
-}
+// .shift-btn {
+//   left: -4px;
+//   opacity: 0.8;
+//   border-radius: 4px 50px 50px 4px;
+// }
 
 .sidebar-container {
   display: flex;
@@ -93,3 +93,4 @@
     color: darken($secondary, 30);
   }
 }
+
