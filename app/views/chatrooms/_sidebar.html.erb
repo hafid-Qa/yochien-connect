@@ -14,9 +14,12 @@
       </div>
     </div>
     <div class="sidebar-bottom mb-5">
-      <h4> Rooms </h4>
-      <%= render  "form", chatroom: chatroom %>
+      <% if current_user.admin? %>
+        <h5>Group Chat name</h5>
+        <%= render  "form", chatroom: chatroom %>
+      <% end %>
       <div id="rooms">
+        <h4>Yochien channels</h4>
         <ul class="list-group">
           <%= render   "chatrooms", chatrooms: chatrooms %>
         </ul>
