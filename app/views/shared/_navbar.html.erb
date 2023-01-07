@@ -5,29 +5,29 @@
         <li>
           <div class="nav-item">
             <%= link_to children_path, class: "nav-link" do %>
-            <i class="fa-solid fa-house nav-icon"></i> Home
+              <i class="fa-solid fa-house nav-icon"></i> Home
             <% end %>
           </div>
         </li>
         <li>
-           <div class="nav-item">
-            <%= link_to '#', class: "nav-link" do %>
-            <i class="fa-solid fa-message nav-icon"></i> Contact
+          <div class="nav-item">
+            <%= link_to chatrooms_path, class: "nav-link" do %>
+              <i class="fa-solid fa-message nav-icon"></i> Contact
             <% end %>
           </div>
         </li>
         <li>
           <div class="nav-item">
             <%= link_to destroy_user_session_path, class: "nav-link", data: {turbo_method: :delete} do %>
-            <i class="fa-solid fa-right-from-bracket nav-icon"></i> Logout
+              <i class="fa-solid fa-right-from-bracket nav-icon"></i> Logout
             <% end %>
           </div>
         </li>
       <% else %>
         <li>
-           <div class="nav-item">
+          <div class="nav-item">
             <%= link_to new_user_session_path, class: "nav-link" do %>
-            <i class="fa-solid fa-right-to-bracket nav-icon"></i> Login
+              <i class="fa-solid fa-right-to-bracket nav-icon"></i> Login
             <% end %>
           </div>
         </li>

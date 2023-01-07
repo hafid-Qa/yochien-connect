@@ -1,0 +1,5 @@
+<% chatrooms.each do |chatroom, index| %>
+  <li class="nav-item">
+    <%= link_to chatroom.name , chatroom_path(chatroom), class:"nav-link sidebar-link #{'active' if params[:id].to_i == chatroom.id}" %>
+  </li>
+<% end %>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { filters } from "../mockData/data";
 
-import Child from "./Child";
+import Child from "./Child.jsx";
 
 const Children = (props) => {
   const [filter, setFilter] = useState("all");
