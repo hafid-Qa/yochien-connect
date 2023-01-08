@@ -4,11 +4,15 @@
       <h5> Hi <%= @current_user.full_name %> </h5>
       <h5> <%= link_to 'Overview', chatrooms_path , class:"nav-link sidebar-link #{'active' if !params[:id].present?}", "aria_current": "page" %>
       </h5>
-      <h4> Parents </h4>
+      <h4> <%= current_user.admin? ? " Parents" : "Msg teachers" %> </h4>
       <div id="users">
         <ul class="list-group">
           <% if current_user.admin? %>
             <%= render   "users/user", users: users %>
+          <% else  %>
+            <li>  <%= link_to "Teachers" , user_path(@admins[0]
+), class:"nav-link sidebar-link " %>
+            </li>
           <% end %>
         </ul>
       </div>

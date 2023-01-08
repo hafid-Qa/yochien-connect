@@ -5,6 +5,7 @@ class ChatroomsController < ApplicationController
     @chatrooms = policy_scope(Chatroom)
     @chatroom = Chatroom.new
     @users = User.all_parents
+    @admins = User.all_admins
     # @message = Message.new
   end
 
