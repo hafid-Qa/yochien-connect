@@ -1,6 +1,8 @@
 .sidebar {
   min-width: 12rem;
   width: 14rem;
+  height: calc(100vh - 4rem);
+  overflow-y: auto;
   transition: 200ms;
   margin-right: 1rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px, rgba(0, 0, 0, 0.1) 0px 1px 2px;
@@ -56,6 +58,7 @@
 }
 
 .sidebar-link {
+  text-align: start;
   margin-bottom: 0;
   padding: 4px 8px;
   color: $gray;
@@ -93,4 +96,3 @@
     color: darken($secondary, 30);
   }
 }
-
