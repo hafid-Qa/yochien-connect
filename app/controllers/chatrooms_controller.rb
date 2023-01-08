@@ -1,17 +1,20 @@
 class ChatroomsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @message = Message.new
     @chatrooms = policy_scope(Chatroom)
-    @users = User.all_parents
     @chatroom = Chatroom.new
+    @users = User.all_parents
+    # @message = Message.new
   end
 
   def show
     @single_chatroom = Chatroom.find(params[:id])
     @chatrooms = policy_scope(Chatroom)
-    @message = Message.new
     @chatroom = Chatroom.new
+    @message = Message.new
     @users = User.all_parents
+    # @messages = @single_chatroom.messages.order(created_at: :asc)
     authorize @chatroom
     render "index"
   end

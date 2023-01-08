@@ -3,6 +3,7 @@ class Chatroom < ApplicationRecord
   has_many :participants, dependent: :destroy
   validates :name, presence: true, uniqueness: true
   scope :public_chatrooms, -> { where(is_private: false) }
+  scope :private_chatrooms, -> { where(is_private: true) }
 
   def self.create_private_chatroom(users, chatroom_name)
     single_chatroom = Chatroom.create(name: chatroom_name, is_private: true)
