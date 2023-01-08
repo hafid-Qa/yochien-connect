@@ -16,7 +16,7 @@
     <div class="sidebar-bottom mb-5">
       <% if current_user.admin? %>
         <h5>Create Group Chat</h5>
-        <%= render  "form", chatroom: chatroom %>
+        <%= render  "chatrooms/form", chatroom: chatroom %>
       <% end %>
       <div id="rooms">
         <h4>Yochien channels</h4>

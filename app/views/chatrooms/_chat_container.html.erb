@@ -1,6 +1,6 @@
 <div class="chatroom" data-controller='chatroom-subscription'
   data-chatroom-subscription-chatroom-id-value="<%= single_chatroom.id %>">
-  <h1>#<%=  user&.full_name || single_chatroom.name 
+  <h1><%=   user&.full_name || single_chatroom.name 
  %></h1>
   <div class="messages" data-chatroom-subscription-target='messages'>
     <% single_chatroom.messages.each do |message| %>
