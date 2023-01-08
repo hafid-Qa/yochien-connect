@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { filters } from "../mockData/data";
-import axios from "axios";
 
 import Child from "./Child.jsx";
 
@@ -42,9 +41,7 @@ const Children = (props) => {
         }
       })
       .then((data) => {
-        console.log(data);
-        setChildren(data);
-        console.log(children); // <-- setChildren doesn't update children
+        setChildren(data); // <-- TODO: setChildren doesn't update children
       })
       .catch((error) => {
         console.log(error);
