@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     @message = Message.new
     @messages = @single_chatroom.messages.order(created_at: :asc)
-    render "chatrooms/index"
+    redirect_to chatrooms_path
   end
 
   private
