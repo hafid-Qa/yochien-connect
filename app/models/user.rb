@@ -11,11 +11,11 @@ class User < ApplicationRecord
   scope :all_parents, -> { where.not(admin: true).where.not(role_type: "driver") }
   scope :all_admins, -> { where(admin: true) }
 
-  def self.create_private_chatroom(users, room_name)
-    single_room = Room.create(name: room_name, is_private: true)
+  def self.create_private_chatroom(users, chatroom_name)
+    single_chatroom = Room.create(name: chatroom_name, is_private: true)
     users.each do |user|
-      Participant.create(user_id: user.id, room_id: single_room.id)
+      Participant.create(user_id: user.id, chatroom_id: single_chatroom.id)
     end
-    single_room
+    single_chatroom
   end
 end

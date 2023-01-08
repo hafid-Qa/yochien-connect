@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def set_single_chatroom
-    Chatroom.where(name: @chatroom_name).first || Chatroom.create_private_chatroom([@user, @current_user],
+    Chatroom.where(name: @chatroom_name).first || Chatroom.create_private_chatroom([@users, @current_user].flatten,
                                                                                    @chatroom_name)
   end
 end
