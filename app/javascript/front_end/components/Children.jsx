@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { filters } from "../mockData/data";
+import axios from "axios";
 
 import Child from "./Child.jsx";
 
@@ -20,7 +21,8 @@ const Children = (props) => {
     }
   }, [filter]);
 
-  const updateStatus = (newStatus, tripId) => {
+  const updateStatus = async (newStatus, child) => {
+    const tripId = child.trip.id;
     const url = `/api/v1/trips/${tripId}`;
     const csrfToken = document.querySelector("[name='csrf-token']").content;
     const options = {
@@ -40,7 +42,9 @@ const Children = (props) => {
         }
       })
       .then((data) => {
+        console.log(data);
         setChildren(data);
+        console.log(children); // <-- setChildren doesn't update children
       })
       .catch((error) => {
         console.log(error);
@@ -53,19 +57,19 @@ const Children = (props) => {
   };
 
   const handleChange = (e, child) => {
-    const new_status = e.target.value;
-    // TODO: update database with API
-    updateStatus(new_status, child.trip.id);
-    // update virtual DOM (update value of dropdown)
-    setChildren((prevChildren) => {
-      const newChildren = prevChildren.map((prevChild) => {
-        return child.id === prevChild.id
-          ? { ...prevChild, status: new_status }
-          : prevChild;
-      });
-      return newChildren;
-    });
-    console.log(children);
+    const newStatus = e.target.value;
+
+    updateStatus(newStatus, child);
+
+    // setChildren((prevChildren) => {
+    //   const newChildren = prevChildren.map((prevChild) => {
+    //     return child.id === prevChild.id
+    //       ? { ...prevChild, status: newStatus }
+    //       : prevChild;
+    //   });
+    //   return newChildren;
+    // });
+    // console.log(children);
   };
 
   return (
@@ -94,12 +98,7 @@ const Children = (props) => {
       <div className="row gap-2">
         {children.map((child) => {
           return (
-            <Child
-              key={child.id}
-              child={child}
-              handleChange={handleChange}
-              
-            />
+            <Child key={child.id} child={child} handleChange={handleChange} />
           );
         })}
       </div>
