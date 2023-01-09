@@ -48,9 +48,10 @@ gem "sassc-rails"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 # custom added
-gem 'aws-sdk-core', '~> 3.168', '>= 3.168.4'
-gem "devise"
 gem "autoprefixer-rails"
+gem 'aws-sdk-core', '~> 3.168', '>= 3.168.4'
+gem "cloudinary"
+gem "devise"
 gem "faker"
 gem "font-awesome-sass", "~> 6.1"
 gem 'pundit', '~> 2.2'
