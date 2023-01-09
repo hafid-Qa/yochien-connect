@@ -50,13 +50,11 @@ GEODATA = ["913-14 Jogasawa, Mutsu shi, Aomori ken",
            "229-5 Higashimachi, Iwakura shi, Aichi ken"]
 
 puts "clearing the database"
+Chatroom.destroy_all
 Trip.destroy_all
 Route.destroy_all
 Child.destroy_all
 User.destroy_all
-
-
-
 
 
 puts "creating teacher..."
@@ -146,3 +144,11 @@ Child.all.each do |child|
 end
 
 puts "Assigned children to trips successfully"
+
+puts "Creating public channels"
+
+Chatroom.create!(name: "general info")
+Chatroom.create!(name: "news letter")
+Chatroom.create!(name: "transport update")
+
+puts "chatroom created"
