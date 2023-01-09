@@ -11,7 +11,7 @@
             <%= render   "users/user", users: users %>
           <% else  %>
             <li>
-              <%= link_to "Teachers" , user_path(@admins[0]), class:"nav-link sidebar-link " %>
+              <%= link_to "Teachers" , user_path(current_user), class:"nav-link sidebar-link " %>
             </li>
           <% end %>
         </ul>
