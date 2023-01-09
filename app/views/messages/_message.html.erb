@@ -1,9 +1,9 @@
 <div class="cont-<%= message.user.id %>">
   <div class="message-box msg-<%= message.user.id %> " >
-    <div class=" d-flex align-items-center">
+    <div class="">
       <small>
-        <strong><%= message.user.full_name %></strong>
-        <i><%= time_ago_in_words(message.created_at) %></i>
+        <strong class="fs-6"><%= message.user.full_name %></strong>
+        <p ><%= message.created_at.localtime.strftime("%a %b %e at %l:%M %p")%></p>
       </small>
     </div>
     <%= message.content %>

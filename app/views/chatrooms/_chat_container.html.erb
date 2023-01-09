@@ -8,7 +8,7 @@
     <% end %>
   </div>
   <%= simple_form_for [single_chatroom, message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex"} do |f| %>
-    <%= f.input :content, label: false, placeholder: "Message ##{single_chatroom.name}", wrapper_html: {class: "flex-grow-1"} %>
+    <%= f.input :content, label: false, placeholder: "Write a message ", wrapper_html: {class: "flex-grow-1"} %>
     <%= f.submit "Send", class: "btn btn-primary mb-3" %>
   <% end %>
 </div>
