@@ -1,17 +1,17 @@
 <div class="sidebar" class="col-md-4 col-sm-4">
   <div class="sidebar-container flex-shrink-0 p-2">
     <div class="sidebar-top">
-      <h5> Hi <%= @current_user.full_name %> </h5>
-      <h5> <%= link_to 'Overview', chatrooms_path , class:"nav-link sidebar-link #{'active' if !params[:id].present?}", "aria_current": "page" %>
-      </h5>
-      <h4> <%= current_user.admin? ? " Parents" : "Msg teachers" %> </h4>
+      <h4> Hi <%= @current_user.full_name %> </h4>
+      <p> <%= link_to 'Overview', chatrooms_path , class:"nav-link sidebar-link #{'active' if !params[:id].present?}", "aria_current": "page" %>
+      </p>
+      <h5 class="mt-3 mb-1">  <%= current_user.admin? ? " Parents" : "Msg teachers" %></h5>
       <div id="users">
         <ul class="list-group">
           <% if current_user.admin? %>
             <%= render   "users/user", users: users %>
           <% else  %>
-            <li>  <%= link_to "Teachers" , user_path(@admins[0]
-), class:"nav-link sidebar-link " %>
+            <li>
+              <%= link_to "Teachers" , user_path(@admins[0]), class:"nav-link sidebar-link " %>
             </li>
           <% end %>
         </ul>
@@ -19,11 +19,11 @@
     </div>
     <div class="sidebar-bottom mb-5">
       <% if current_user.admin? %>
-        <h5>Create Group Chat</h5>
+        <h5 class="mt-3 mb-1">Create Group Chat</h5>
         <%= render  "chatrooms/form", chatroom: chatroom %>
       <% end %>
       <div id="rooms">
-        <h4>Yochien channels</h4>
+        <h5 class="mt-3 mb-1">Yochien channels</h5>
         <ul class="list-group">
           <%= render   "chatrooms/chatrooms", chatrooms: chatrooms , single_chatroom: @single_chatroom %>
         </ul>
