@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_chatrooms, :set_messages, only: [:create]
+  before_action :set_chatrooms, :set_messages, only: :create
 
   def create
     if @message.save
