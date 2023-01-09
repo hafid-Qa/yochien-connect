@@ -8,8 +8,6 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :full_name, presence: true
   has_many :messages, dependent: :destroy
-  scope :all_parents, -> { where.not(admin: true).where.not(role_type: "driver") }
+  scope :all_parents, -> { where(admin: false).where.not(role_type: "driver") }
   scope :all_admins, -> { where(admin: true) }
-
-  
 end
