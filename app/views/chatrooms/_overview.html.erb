@@ -1,7 +1,9 @@
-<div class="h-100 align-items-center py-0">
+<div class="cards p-3">
   <% chatrooms.each do |chatroom| %>
-    <div>
-      <h3><%= chatroom.name %></h3>
-    </div>
+    <%= link_to chatroom_path(chatroom), class: "text-decoration-none" do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path 'image1.jpg' %>)">
+        <%= chatroom.name.capitalize %>
+      </div>
+    <% end %>
   <% end %>
 </div>

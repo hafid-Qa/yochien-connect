@@ -1,17 +1,14 @@
 class ChatroomsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_chatrooms_and_users, only: %i[index show]
+
   def index
-    @message = Message.new
-    @chatrooms = policy_scope(Chatroom)
-    @users = User.all_except(current_user)
-    @chatroom = Chatroom.new
+    @admins = User.all_admins
   end
 
   def show
     @single_chatroom = Chatroom.find(params[:id])
-    @chatrooms = Chatroom.public_rooms
     @message = Message.new
-    @chatroom = Chatroom.new
-    @users = User.all_except(current_user)
     authorize @chatroom
     render "index"
   end
@@ -27,6 +24,12 @@ class ChatroomsController < ApplicationController
   end
 
   private
+
+  def set_chatrooms_and_users
+    @chatrooms = policy_scope(Chatroom)
+    @chatroom = Chatroom.new
+    @users = User.all_parents
+  end
 
   def chatroom_params
     params.require(:chatroom).permit(:name)

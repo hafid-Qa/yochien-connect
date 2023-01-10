@@ -1,8 +1,8 @@
 <div class="chatroom-container">
-  <%= render "sidebar", chatrooms: @chatrooms, users: @users, rooms: @rooms, chatroom: @chatroom %>
-  <% if params[:id].present? %>
-    <%= render "chat_container" ,single_chatroom: @single_chatroom, message: @message %>
+  <%= render "chatrooms/sidebar", chatrooms: @chatrooms, users: @users, rooms: @rooms, chatroom: @chatroom %>
+  <% if @single_chatroom %>
+    <%= render "chatrooms/chat_container" ,single_chatroom: @single_chatroom, message: @message, user: @user %>
   <% else %>
-    <%= render "overview",chatrooms: @chatrooms %>
+    <%= render "chatrooms/overview",chatrooms: @chatrooms %>
   <% end %>
 </div>
