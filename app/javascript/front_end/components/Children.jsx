@@ -41,7 +41,11 @@ const Children = (props) => {
         }
       })
       .then((data) => {
-        setChildren(data); // <-- TODO: setChildren doesn't update children
+        setChildren((prevChildren) =>
+          prevChildren.map((prevChild) =>
+            prevChild.id === child.id ? { ...prevChild, trip: data } : prevChild
+          )
+        );
       })
       .catch((error) => {
         console.log(error);
