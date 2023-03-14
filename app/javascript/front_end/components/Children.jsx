@@ -32,25 +32,22 @@ const Children = (props) => {
       },
       body: JSON.stringify({ status: newStatus }),
     };
-    fetch(url, options)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Something went wrong");
-        }
-      })
-      .then((data) => {
-        setChildren((prevChildren) =>
-          prevChildren.map((prevChild) =>
-            prevChild.id === child.id ? { ...prevChild, trip: data } : prevChild
-          )
-        );
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+
+    try {
+      const response = await fetch(url, options);
+      if (response.ok) {
+        await response.json();
+        const newChildrenResponse = await fetch("/api/v1/children");
+        const newChildren = await newChildrenResponse.json();
+        setChildren(newChildren);
+      } else {
+        throw new Error("Something went wrong");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+
 
   const handleClick = (e, index) => {
     setFilter(e.target.textContent);

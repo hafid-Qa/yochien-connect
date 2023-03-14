@@ -9,6 +9,8 @@ class Api::V1::TripsController < ApplicationController
     authorize [:api, :v1, trip]
   end
 
+  
+
   private
 
   def trips_params

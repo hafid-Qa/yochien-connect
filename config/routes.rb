@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      get 'children/index'
+    end
+  end
   root to: "pages#home"
   devise_for :users
   get 'user/:id', to: 'users#show', as: 'user'
@@ -10,6 +15,8 @@ Rails.application.routes.draw do
     # API routing
     namespace :api, defaults: { format: :json } do
       namespace :v1 do
+        resources :children, only: [:index] do
+        end
         resources :trips, only: [:update] do
         end
       end
